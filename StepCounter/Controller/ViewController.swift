@@ -8,12 +8,18 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    @IBOutlet weak var startButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+ 
+        startButton.tintColor = UIColor.green
     }
 
-
+    @IBAction func buttonPressed(_ sender: UIButton) {
+        print(sender.titleLabel!.text!)
+        
+    }
+    
 }
 
