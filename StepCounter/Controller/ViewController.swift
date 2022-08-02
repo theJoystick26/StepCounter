@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func buttonPressed(_ sender: UIButton) {
-        print(sender.titleLabel?.text!)
+        print(sender.titleLabel!.text!)
         
     }
     
