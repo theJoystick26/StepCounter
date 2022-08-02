@@ -10,6 +10,8 @@ import CoreMotion
 
 class PedometerViewController: UIViewController {
     @IBOutlet weak var stepsLabel: UILabel!
+    @IBOutlet weak var caloriesLabel: UILabel!
+    @IBOutlet weak var milesLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
     
     var tracker = Tracker()
@@ -19,14 +21,13 @@ class PedometerViewController: UIViewController {
         
         startButton.tintColor = UIColor.white
         startButton.backgroundColor = UIColor.green
-        
-        tracker.enableTracking()
     }
     
     @IBAction func buttonPressed(_ sender: UIButton) {
         if !tracker.getCountingStepsStatus() {
-            tracker.startTrackingSteps { steps in
-                self.stepsLabel.text = steps
+            tracker.startTrackingSteps { data in
+                self.stepsLabel.text = data["steps"]
+                self.milesLabel.text = data["miles"]
             }
             updateUI(UIColor.red, "Stop")
         } else {
