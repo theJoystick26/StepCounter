@@ -41,6 +41,9 @@ class PedometerViewController: UIViewController {
     func updateUI(_ color: UIColor, _ buttonText: String) {
         startButton.backgroundColor = color
         startButton.setTitle(buttonText, for: .normal)
+        stepsLabel.text = "0"
+        caloriesLabel.text = "0"
+        caloriesLabel.text = "0"
     }
 }
 
