@@ -12,11 +12,7 @@ class PedometerViewController: UIViewController {
     @IBOutlet weak var stepsLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
     
-    var isCountingSteps = false
-    
-    private let activityManager = CMMotionActivityManager()
-    
-    private let pedometer = CMPedometer()
+    var tracker = Tracker()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,39 +20,26 @@ class PedometerViewController: UIViewController {
         startButton.tintColor = UIColor.white
         startButton.backgroundColor = UIColor.green
         
-        activityManager.startActivityUpdates(to: OperationQueue.main) { _ in
-            return
-        }
+        tracker.enableTracking()
     }
     
     @IBAction func buttonPressed(_ sender: UIButton) {
-        if !isCountingSteps {
-            if CMPedometer.isStepCountingAvailable() {
-                // .startUpdates is calling the completion handler once the pedometer data has been received
-                pedometer.startUpdates(from: Date()) { data, error in
-                    if error != nil { return }
-                    
-                    if let pedometerData = data {
-                        DispatchQueue.main.async {
-                            self.stepsLabel.text =
-                            String(pedometerData.numberOfSteps.intValue)
-                        }
-                    }
-                }
+        if !tracker.getCountingStepsStatus() {
+            tracker.startTrackingSteps { steps in
+                self.stepsLabel.text = steps
             }
-            
-            startButton.backgroundColor = UIColor.red
-            startButton.setTitle("Stop", for: .normal)
-            isCountingSteps = true
+            updateUI(UIColor.red, "Stop")
         } else {
-            pedometer.stopUpdates()
-            
-            startButton.backgroundColor = UIColor.green
-            startButton.setTitle("Start", for: .normal)
+            tracker.stopTrackingSteps()
+            updateUI(UIColor.green, "Start")
         }
-        
-        
-        
+    }
+    
+    // MARK: - Update UI Methods
+    
+    func updateUI(_ color: UIColor, _ buttonText: String) {
+        startButton.backgroundColor = color
+        startButton.setTitle(buttonText, for: .normal)
     }
 }
 
