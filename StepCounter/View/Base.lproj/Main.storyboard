@@ -11,7 +11,7 @@
         <!--Item-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="StepCounter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="PedometerViewController" customModule="StepCounter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -44,10 +44,9 @@
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="125" id="39i-j3-mCh"/>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="ecZ-0j-OAG"/>
                                                 </constraints>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="filled" title="Start">
-                                                    <fontDescription key="titleFontDescription" type="system" pointSize="24"/>
-                                                </buttonConfiguration>
+                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Start"/>
                                                 <connections>
                                                     <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7t7-A8-vKh"/>
                                                 </connections>
@@ -84,6 +83,7 @@
                     <tabBarItem key="tabBarItem" title="Item" id="8nc-0I-Kju"/>
                     <connections>
                         <outlet property="startButton" destination="LTB-cN-229" id="hk8-Ca-hU6"/>
+                        <outlet property="stepsLabel" destination="kMp-Jf-hqG" id="Oae-1h-wU5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -112,6 +112,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="89i-zI-pfz" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="XOS-iv-D0U">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
