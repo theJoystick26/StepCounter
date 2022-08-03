@@ -6,16 +6,29 @@
 //
 
 import UIKit
+import RealmSwift
 
 class LogViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
+    let realm = try! Realm()
+    var walks: Results<Walk>?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         tableView.dataSource = self
+        loadWalks()
     }
-
+    
+    override func viewDidAppear(_ animated: Bool) {
+        loadWalks()
+    }
+    
+    // loading walk instances from realm
+    func loadWalks() {
+        walks = realm.objects(Walk.self).sorted(byKeyPath: "startTime", ascending: false)
+        tableView.reloadData()
+    }
 }
 
 // MARK: - TavleView Data Source Methods
@@ -26,13 +39,15 @@ extension LogViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return walks?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ProtoCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PrototypeCell", for: indexPath)
         
-        cell.textLabel?.text = "Hi"
+        if let walks = walks {
+            cell.textLabel?.text = String(walks[indexPath.row].steps)
+        }
         
         return cell
     }
