@@ -6,6 +6,6 @@ target 'StepCounter' do
   use_frameworks!
 
   # Pods for StepCounter
-  pod 'RealmSwift', '~>10'
+pod 'RealmSwift', '~>10'
 
 end
