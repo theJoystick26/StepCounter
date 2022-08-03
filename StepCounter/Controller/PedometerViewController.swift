@@ -21,14 +21,13 @@ class PedometerViewController: UIViewController {
         
         startButton.tintColor = UIColor.white
         startButton.backgroundColor = UIColor.green
+        
+        tracker.delegate = self
     }
     
     @IBAction func buttonPressed(_ sender: UIButton) {
         if !tracker.getCountingStepsStatus() {
-            tracker.startTrackingSteps { data in
-                self.stepsLabel.text = data["steps"]
-                self.milesLabel.text = data["miles"]
-            }
+            tracker.startTrackingSteps()
             updateUI(UIColor.red, "Stop")
         } else {
             tracker.stopTrackingSteps()
@@ -41,9 +40,24 @@ class PedometerViewController: UIViewController {
     func updateUI(_ color: UIColor, _ buttonText: String) {
         startButton.backgroundColor = color
         startButton.setTitle(buttonText, for: .normal)
-        stepsLabel.text = "0"
-        caloriesLabel.text = "0"
-        caloriesLabel.text = "0"
+        self.stepsLabel.text = "0"
+        self.caloriesLabel.text = "0"
+        self.milesLabel.text = "0"
+    }
+}
+
+// MARK: - Tracker Delegate Methods
+
+extension PedometerViewController: TrackerDelegate {
+    func didUpdatePedometerData(_ steps: Int, _ miles: Float) {
+        DispatchQueue.main.async {
+            self.stepsLabel.text = String(steps)
+            self.milesLabel.text = miles.description
+        }
+    }
+    
+    func didFailWithError(_ error: Error) {
+        print(error)
     }
 }
 

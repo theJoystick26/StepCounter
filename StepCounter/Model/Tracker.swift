@@ -8,10 +8,16 @@
 import Foundation
 import CoreMotion
 
+protocol TrackerDelegate {
+    func didUpdatePedometerData(_ steps: Int, _ miles: Float)
+    func didFailWithError(_ error: Error)
+}
+
 class Tracker {
     private let activityManager: CMMotionActivityManager
     private let pedometer: CMPedometer
     private var isCountingSteps: Bool
+    var delegate: TrackerDelegate?
     
     init() {
         activityManager = CMMotionActivityManager()
@@ -19,7 +25,7 @@ class Tracker {
         isCountingSteps = false
     }
     
-    func startTrackingSteps(completionHandler: @escaping ([String: String]) -> Void) {
+    func startTrackingSteps() {
         // enables tracking
         activityManager.startActivityUpdates(to: OperationQueue.main) { _ in
             return
@@ -28,14 +34,13 @@ class Tracker {
         if CMPedometer.isStepCountingAvailable() && CMPedometer.isDistanceAvailable() {
             // .startUpdates is calling the completion handler once the pedometer data has been received
             pedometer.startUpdates(from: Date()) { data, error in
-                if error != nil { return }
+                if error != nil {
+                    self.delegate?.didFailWithError(error!)
+                    return
+                }
                 
                 if let pedometerData = data {
-                    DispatchQueue.main.async {
-                        let distanceData = ["steps": String(pedometerData.numberOfSteps.intValue),
-                                            "miles": self.metersToMiles(pedometerData.distance?.floatValue ?? 0).description]
-                        completionHandler(distanceData)
-                    }
+                    self.delegate?.didUpdatePedometerData(pedometerData.numberOfSteps.intValue, self.metersToMiles(pedometerData.distance?.floatValue ?? 0))
                 }
             }
         }
