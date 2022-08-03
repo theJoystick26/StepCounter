@@ -23,10 +23,10 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="384.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JEH-sI-Vi5" userLabel="Steps View">
-                                                <rect key="frame" x="0.0" y="0.0" width="138" height="384.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="207" height="384.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMp-Jf-hqG" userLabel="Steps Label">
-                                                        <rect key="frame" x="58" y="171" width="22.5" height="43"/>
+                                                        <rect key="frame" x="92.5" y="171" width="22.5" height="43"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -38,27 +38,11 @@
                                                     <constraint firstItem="kMp-Jf-hqG" firstAttribute="centerX" secondItem="JEH-sI-Vi5" secondAttribute="centerX" id="jCm-5C-NxS"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Sv-Ej-HuW" userLabel="Calories View">
-                                                <rect key="frame" x="138" y="0.0" width="138" height="384.5"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LKV-pq-LZ4" userLabel="Calories Label">
-                                                        <rect key="frame" x="58" y="171" width="22.5" height="43"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                <constraints>
-                                                    <constraint firstItem="LKV-pq-LZ4" firstAttribute="centerX" secondItem="2Sv-Ej-HuW" secondAttribute="centerX" id="OnE-gN-uPL"/>
-                                                    <constraint firstItem="LKV-pq-LZ4" firstAttribute="centerY" secondItem="2Sv-Ej-HuW" secondAttribute="centerY" id="hah-Ec-f5S"/>
-                                                </constraints>
-                                            </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="flE-yB-F2V" userLabel="Miles View">
-                                                <rect key="frame" x="276" y="0.0" width="138" height="384.5"/>
+                                                <rect key="frame" x="207" y="0.0" width="207" height="384.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BAx-ZS-Rbc" userLabel="Miles Label">
-                                                        <rect key="frame" x="58" y="171" width="22.5" height="43"/>
+                                                        <rect key="frame" x="92.5" y="171" width="22.5" height="43"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -119,7 +103,6 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="8nc-0I-Kju"/>
                     <connections>
-                        <outlet property="caloriesLabel" destination="LKV-pq-LZ4" id="ctg-gQ-qhc"/>
                         <outlet property="milesLabel" destination="BAx-ZS-Rbc" id="sDB-fW-Gov"/>
                         <outlet property="startButton" destination="LTB-cN-229" id="hk8-Ca-hU6"/>
                         <outlet property="stepsLabel" destination="kMp-Jf-hqG" id="Oae-1h-wU5"/>

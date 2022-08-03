@@ -10,7 +10,6 @@ import CoreMotion
 
 class PedometerViewController: UIViewController {
     @IBOutlet weak var stepsLabel: UILabel!
-    @IBOutlet weak var caloriesLabel: UILabel!
     @IBOutlet weak var milesLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
     
@@ -41,7 +40,6 @@ class PedometerViewController: UIViewController {
         startButton.backgroundColor = color
         startButton.setTitle(buttonText, for: .normal)
         self.stepsLabel.text = "0"
-        self.caloriesLabel.text = "0"
         self.milesLabel.text = "0"
     }
 }
