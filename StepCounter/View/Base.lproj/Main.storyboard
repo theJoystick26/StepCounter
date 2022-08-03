@@ -19,22 +19,43 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="45u-hr-KkG">
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JEH-sI-Vi5" userLabel="Steps View">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="DUh-KM-TRK" userLabel="Metric Stack View">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="384.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMp-Jf-hqG" userLabel="Steps Label">
-                                                <rect key="frame" x="196" y="171" width="22.5" height="43"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JEH-sI-Vi5" userLabel="Steps View">
+                                                <rect key="frame" x="0.0" y="0.0" width="207" height="384.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMp-Jf-hqG" userLabel="Steps Label">
+                                                        <rect key="frame" x="92.5" y="171" width="22.5" height="43"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="kMp-Jf-hqG" firstAttribute="centerY" secondItem="JEH-sI-Vi5" secondAttribute="centerY" id="TtS-Il-C4Y"/>
+                                                    <constraint firstItem="kMp-Jf-hqG" firstAttribute="centerX" secondItem="JEH-sI-Vi5" secondAttribute="centerX" id="jCm-5C-NxS"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="flE-yB-F2V" userLabel="Miles View">
+                                                <rect key="frame" x="207" y="0.0" width="207" height="384.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BAx-ZS-Rbc" userLabel="Miles Label">
+                                                        <rect key="frame" x="92.5" y="171" width="22.5" height="43"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="BAx-ZS-Rbc" firstAttribute="centerY" secondItem="flE-yB-F2V" secondAttribute="centerY" id="HYC-bn-v7J"/>
+                                                    <constraint firstItem="BAx-ZS-Rbc" firstAttribute="centerX" secondItem="flE-yB-F2V" secondAttribute="centerX" id="fEU-5m-pJX"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstItem="kMp-Jf-hqG" firstAttribute="centerY" secondItem="JEH-sI-Vi5" secondAttribute="centerY" id="TtS-Il-C4Y"/>
-                                            <constraint firstItem="kMp-Jf-hqG" firstAttribute="centerX" secondItem="JEH-sI-Vi5" secondAttribute="centerX" id="jCm-5C-NxS"/>
-                                        </constraints>
-                                    </view>
+                                    </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Od6-9m-PL1" userLabel="Button View">
                                         <rect key="frame" x="0.0" y="384.5" width="414" height="384.5"/>
                                         <subviews>
@@ -60,14 +81,14 @@
                                     </view>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="DUh-KM-TRK" secondAttribute="trailing" id="CsP-tU-Nbq"/>
                                     <constraint firstAttribute="bottom" secondItem="Od6-9m-PL1" secondAttribute="bottom" id="DBo-3C-ZdO"/>
-                                    <constraint firstAttribute="trailing" secondItem="JEH-sI-Vi5" secondAttribute="trailing" id="EJO-9F-Hj4"/>
                                     <constraint firstAttribute="trailing" secondItem="Od6-9m-PL1" secondAttribute="trailing" id="Oip-xK-lJq"/>
-                                    <constraint firstItem="JEH-sI-Vi5" firstAttribute="leading" secondItem="45u-hr-KkG" secondAttribute="leading" id="RiG-n1-gZJ"/>
-                                    <constraint firstItem="JEH-sI-Vi5" firstAttribute="top" secondItem="45u-hr-KkG" secondAttribute="top" id="U1j-0c-CV3"/>
                                     <constraint firstItem="Od6-9m-PL1" firstAttribute="leading" secondItem="45u-hr-KkG" secondAttribute="leading" id="UDy-DA-Dqo"/>
-                                    <constraint firstItem="Od6-9m-PL1" firstAttribute="top" secondItem="JEH-sI-Vi5" secondAttribute="bottom" id="sOg-H5-JRn"/>
-                                    <constraint firstItem="Od6-9m-PL1" firstAttribute="top" secondItem="JEH-sI-Vi5" secondAttribute="bottom" id="sdc-Rw-hcH"/>
+                                    <constraint firstItem="DUh-KM-TRK" firstAttribute="leading" secondItem="45u-hr-KkG" secondAttribute="leading" id="hI4-09-Ozc"/>
+                                    <constraint firstItem="Od6-9m-PL1" firstAttribute="top" secondItem="DUh-KM-TRK" secondAttribute="bottom" id="mR3-i7-orW"/>
+                                    <constraint firstItem="DUh-KM-TRK" firstAttribute="top" secondItem="45u-hr-KkG" secondAttribute="top" id="yr3-cM-fmE"/>
+                                    <constraint firstItem="Od6-9m-PL1" firstAttribute="top" secondItem="DUh-KM-TRK" secondAttribute="bottom" id="z0j-xy-UWZ"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -82,13 +103,14 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="8nc-0I-Kju"/>
                     <connections>
+                        <outlet property="milesLabel" destination="BAx-ZS-Rbc" id="sDB-fW-Gov"/>
                         <outlet property="startButton" destination="LTB-cN-229" id="hk8-Ca-hU6"/>
                         <outlet property="stepsLabel" destination="kMp-Jf-hqG" id="Oae-1h-wU5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="35" y="453"/>
+            <point key="canvasLocation" x="34.782608695652179" y="452.67857142857139"/>
         </scene>
         <!--Item-->
         <scene sceneID="zJf-1E-y3l">
