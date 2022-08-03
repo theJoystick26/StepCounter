@@ -7,12 +7,16 @@
 
 import UIKit
 import CoreMotion
+import RealmSwift
 
 class PedometerViewController: UIViewController {
     @IBOutlet weak var stepsLabel: UILabel!
     @IBOutlet weak var milesLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
     
+    // initializing realm instance
+    let realm = try! Realm()
+    // initializing tracker
     var tracker = Tracker()
     
     override func viewDidLoad() {
@@ -22,6 +26,8 @@ class PedometerViewController: UIViewController {
         startButton.backgroundColor = UIColor.green
         
         tracker.delegate = self
+        tracker.enableTracking()
+        //        print("Realm is located at:", realm.configuration.fileURL!)
     }
     
     @IBAction func buttonPressed(_ sender: UIButton) {
@@ -51,6 +57,19 @@ extension PedometerViewController: TrackerDelegate {
         DispatchQueue.main.async {
             self.stepsLabel.text = String(steps)
             self.milesLabel.text = miles.description
+        }
+    }
+    
+    // Writing walk instance to realm
+    
+    func didFinishWalk(_ steps: Int, _ miles: Float, _ startTime: Date, _ endTime: Date) {
+        let walk = Walk(steps, miles, startTime, endTime)
+        do {
+            try realm.write {
+                realm.add(walk)
+            }
+        } catch {
+            print("Error saving walk: \(error)")
         }
     }
     
