@@ -8,6 +8,7 @@
 import UIKit
 import CoreMotion
 import RealmSwift
+import HealthKit
 
 class PedometerViewController: UIViewController {
     @IBOutlet weak var stepsLabel: UILabel!
@@ -16,17 +17,24 @@ class PedometerViewController: UIViewController {
     
     // initializing realm instance
     let realm = try! Realm()
+    
+    let hkManager = HKManager()
+    
     // initializing tracker
     var tracker = Tracker()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         startButton.tintColor = UIColor.white
         startButton.backgroundColor = UIColor.green
         
         tracker.delegate = self
-        tracker.enableTracking()
+        
+        hkManager.authorizeHealthKit { success in
+            if success {
+                self.tracker.enableTracking()
+            }
+        }
         //        print("Realm is located at:", realm.configuration.fileURL!)
     }
     
@@ -45,8 +53,8 @@ class PedometerViewController: UIViewController {
     func updateUI(_ color: UIColor, _ buttonText: String) {
         startButton.backgroundColor = color
         startButton.setTitle(buttonText, for: .normal)
-        self.stepsLabel.text = "0"
-        self.milesLabel.text = "0"
+        self.stepsLabel.text = "Steps: 0"
+        self.milesLabel.text = "Miles: 0"
     }
 }
 
@@ -55,26 +63,26 @@ class PedometerViewController: UIViewController {
 extension PedometerViewController: TrackerDelegate {
     func didUpdatePedometerData(_ steps: Int, _ miles: Float) {
         DispatchQueue.main.async {
-            self.stepsLabel.text = String(steps)
-            self.milesLabel.text = miles.description
+            self.stepsLabel.text = "Steps: \(String(steps))"
+            self.milesLabel.text = "Miles: \(miles.description)"
         }
     }
-    
-    // Writing walk instance to realm
-    
-    func didFinishWalk(_ steps: Int, _ miles: Float, _ startTime: Date, _ endTime: Date) {
-        let walk = Walk(steps, miles, startTime, endTime)
+
+    func didFinishWalk(_ steps: Int, _ calories: Float, _ miles: Float, _ startTime: Date, _ endTime: Date) {
+        let walk = Walk(steps, calories, miles, startTime, endTime)
+        // Writing walk instance to realm
         do {
-            try realm.write {
-                realm.add(walk)
+            try self.realm.write {
+                self.realm.add(walk)
             }
         } catch {
             print("Error saving walk: \(error)")
         }
+        // writing to HealthKit
+        hkManager.writeToHealthKit(calories, startTime, endTime)
     }
     
     func didFailWithError(_ error: Error) {
         print(error)
     }
 }
-

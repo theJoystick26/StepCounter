@@ -10,7 +10,7 @@ import CoreMotion
 
 protocol TrackerDelegate {
     func didUpdatePedometerData(_ steps: Int, _ miles: Float)
-    func didFinishWalk(_ steps: Int, _ miles: Float, _ startTime: Date, _ endTime: Date)
+    func didFinishWalk(_ steps: Int, _ calories: Float, _ miles: Float, _ startTime: Date, _ endTime: Date)
     func didFailWithError(_ error: Error)
 }
 
@@ -19,6 +19,7 @@ class Tracker {
     private let pedometer: CMPedometer
     private var isCountingSteps: Bool
     private var steps: Int = 0
+    private var calories: Float = 0
     private var miles: Float = 0
     private var startTime: Date?
     private var endTime: Date?
@@ -48,6 +49,7 @@ class Tracker {
                 }
                 if let data = data {
                     self.steps = data.numberOfSteps.intValue
+                    self.calories = data.numberOfSteps.floatValue * 0.04
                     self.miles = self.metersToMiles(data.distance?.floatValue ?? 0)
                     
                     self.delegate?.didUpdatePedometerData(self.steps, self.miles)
@@ -63,7 +65,7 @@ class Tracker {
         endTime = Date()
         
         if let startTime = startTime, let endTime = endTime {
-            delegate?.didFinishWalk(steps, miles, startTime, endTime)
+            delegate?.didFinishWalk(steps, calories, miles, startTime, endTime)
         }
         
         isCountingSteps = false

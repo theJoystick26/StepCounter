@@ -46,7 +46,7 @@ extension LogViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PrototypeCell", for: indexPath)
         
         if let walks = walks {
-            cell.textLabel?.text = String(walks[indexPath.row].steps)
+            cell.textLabel?.text = "\(String(walks[indexPath.row].calories)) calories"
         }
         
         return cell
