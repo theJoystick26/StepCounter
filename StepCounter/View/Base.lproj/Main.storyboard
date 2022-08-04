@@ -112,7 +112,7 @@
             </objects>
             <point key="canvasLocation" x="34.782608695652179" y="452.67857142857139"/>
         </scene>
-        <!--Item-->
+        <!--Log View Controller-->
         <scene sceneID="zJf-1E-y3l">
             <objects>
                 <viewController id="Qye-to-pnq" customClass="LogViewController" customModule="StepCounter" customModuleProvider="target" sceneMemberID="viewController">
@@ -121,14 +121,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="x7K-pt-kFw">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PrototypeCell" id="dn8-36-o6s">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PrototypeCell" rowHeight="44" id="dn8-36-o6s">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dn8-36-o6s" id="8zI-0o-HNr">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -144,14 +144,46 @@
                             <constraint firstItem="8pY-7c-dhM" firstAttribute="trailing" secondItem="x7K-pt-kFw" secondAttribute="trailing" id="znt-pZ-Jic"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="o55-FY-LMw"/>
+                    <navigationItem key="navigationItem" id="VQ9-bP-8HP"/>
                     <connections>
                         <outlet property="tableView" destination="x7K-pt-kFw" id="4h3-8I-bZw"/>
+                        <segue destination="r0S-r2-GyK" kind="show" identifier="toStatsView" id="vix-Z7-1rt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TKX-KR-rbc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1258" y="453"/>
+            <point key="canvasLocation" x="2168.1159420289855" y="452.67857142857139"/>
+        </scene>
+        <!--Stats View Controller-->
+        <scene sceneID="KqR-bl-GXt">
+            <objects>
+                <viewController id="r0S-r2-GyK" customClass="StatsViewController" customModule="StepCounter" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="c7j-2G-pFb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Steps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VOQ-rm-P8o">
+                                <rect key="frame" x="185" y="437.5" width="44" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="sy1-xE-gFf"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="VOQ-rm-P8o" firstAttribute="centerX" secondItem="c7j-2G-pFb" secondAttribute="centerX" id="7PJ-Zv-MwB"/>
+                            <constraint firstItem="VOQ-rm-P8o" firstAttribute="centerY" secondItem="c7j-2G-pFb" secondAttribute="centerY" id="DZx-mY-mOE"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="aOG-mF-7ZA"/>
+                    <connections>
+                        <outlet property="stepsLabel" destination="VOQ-rm-P8o" id="fMI-Lf-ES6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qBi-ZM-lSc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3053.6231884057975" y="452.67857142857139"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="d20-Lc-f0d">
@@ -165,12 +197,31 @@
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="yZS-9U-pVj"/>
-                        <segue destination="Qye-to-pnq" kind="relationship" relationship="viewControllers" id="aY5-av-16D"/>
+                        <segue destination="gf3-Pl-1u9" kind="relationship" relationship="viewControllers" id="aY5-av-16D"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UC1-m4-gko" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="636" y="-295"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="ewd-Ud-wAw">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gf3-Pl-1u9" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="o55-FY-LMw"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Luh-wa-uUB">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Qye-to-pnq" kind="relationship" relationship="rootViewController" id="3gI-oY-SDX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bN2-HW-VpW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1257.9710144927537" y="452.67857142857139"/>
         </scene>
     </scenes>
     <resources>

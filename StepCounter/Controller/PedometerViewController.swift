@@ -67,7 +67,7 @@ extension PedometerViewController: TrackerDelegate {
             self.milesLabel.text = "Miles: \(miles.description)"
         }
     }
-
+    
     func didFinishWalk(_ steps: Int, _ calories: Float, _ miles: Float, _ startTime: Date, _ endTime: Date) {
         let walk = Walk(steps, calories, miles, startTime, endTime)
         // Writing walk instance to realm

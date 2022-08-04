@@ -16,7 +16,10 @@ class LogViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.rowHeight = 60
+        tableView.delegate = self
         tableView.dataSource = self
+        
         loadWalks()
     }
     
@@ -31,9 +34,9 @@ class LogViewController: UIViewController {
     }
 }
 
-// MARK: - TavleView Data Source Methods
+// MARK: - TavleView DataSource/Delegate Methods
 
-extension LogViewController: UITableViewDataSource {
+extension LogViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -47,8 +50,31 @@ extension LogViewController: UITableViewDataSource {
         
         if let walks = walks {
             cell.textLabel?.text = "\(String(walks[indexPath.row].calories)) calories"
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 30)
+            cell.accessoryType = .disclosureIndicator
         }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "toStatsView", sender: indexPath)
+    }
+}
+
+// MARK: - Segue Handling
+
+extension LogViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)  {
+        if segue.identifier == "toStatsView" {
+            if let walks = walks {
+                let statsViewController = segue.destination as! StatsViewController
+                let sender = sender as! IndexPath
+                statsViewController.steps = walks[sender.row].steps
+            }
+        }
+        
+        
+        
     }
 }
