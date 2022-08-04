@@ -19,7 +19,6 @@ class PedometerViewController: UIViewController {
     let realm = try! Realm()
     
     let hkManager = HKManager()
-    
     // initializing tracker
     var tracker = Tracker()
     

@@ -10,7 +10,6 @@ import HealthKit
 
 class HKManager {
     var healthStore: HKHealthStore?
-    var query: HKStatisticsCollectionQuery?
     
     func authorizeHealthKit(completion: @escaping (Bool) -> Void) {
         if HKHealthStore.isHealthDataAvailable() {

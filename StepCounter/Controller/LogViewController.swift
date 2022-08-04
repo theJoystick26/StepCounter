@@ -73,8 +73,5 @@ extension LogViewController {
                 statsViewController.steps = walks[sender.row].steps
             }
         }
-        
-        
-        
     }
 }
