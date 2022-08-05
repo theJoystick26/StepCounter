@@ -6,9 +6,7 @@
 //
 
 import UIKit
-import CoreMotion
 import RealmSwift
-import HealthKit
 import MapKit
 
 class PedometerViewController: UIViewController {
