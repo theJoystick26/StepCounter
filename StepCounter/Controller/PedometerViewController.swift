@@ -6,11 +6,11 @@
 //
 
 import UIKit
-import CoreMotion
 import RealmSwift
-import HealthKit
+import MapKit
 
 class PedometerViewController: UIViewController {
+    @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var stepsLabel: UILabel!
     @IBOutlet weak var milesLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
@@ -22,19 +22,33 @@ class PedometerViewController: UIViewController {
     // initializing tracker
     var tracker = Tracker()
     
+    let locationManager = CLLocationManager()
+    
+    var oldLocation: CLLocation?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         startButton.tintColor = UIColor.white
         startButton.backgroundColor = UIColor.green
         
+        mapView.delegate = self
         tracker.delegate = self
+        locationManager.delegate = self
         
         hkManager.authorizeHealthKit { success in
             if success {
                 self.tracker.enableTracking()
+                self.locationManager.configureLocationManager(sender: self)
             }
         }
         //        print("Realm is located at:", realm.configuration.fileURL!)
+    }
+    
+    func centerMapOnLocation(_ location: CLLocation, mapView: MKMapView) {
+        let regionRadius: CLLocationDistance = 500
+        let coordinateRegion = MKCoordinateRegion(center: location.coordinate,
+                                                  latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
+        mapView.setRegion(coordinateRegion, animated: true)
     }
     
     @IBAction func buttonPressed(_ sender: UIButton) {
@@ -44,6 +58,7 @@ class PedometerViewController: UIViewController {
         } else {
             tracker.stopTrackingSteps()
             updateUI(UIColor.green, "Start")
+            mapView.removeOverlays(mapView.overlays)
         }
     }
     
@@ -83,5 +98,55 @@ extension PedometerViewController: TrackerDelegate {
     
     func didFailWithError(_ error: Error) {
         print(error)
+    }
+}
+
+// MARK: - Extending CLLocationManager Methods
+
+extension CLLocationManager{
+    func configureLocationManager(sender: CLLocationManagerDelegate) {
+        requestAlwaysAuthorization()
+        requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            delegate = sender
+            desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            startUpdatingLocation()
+        }
+    }
+}
+
+// MARK: - CLLocationManager Delegate Methods
+
+extension PedometerViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let locaction: CLLocation = locations.last else { return }
+        centerMapOnLocation(locaction, mapView: mapView)
+        
+        if tracker.getCountingStepsStatus() {
+            if let oldLocation = oldLocation {
+                let oldCoordinates = oldLocation.coordinate
+                let newCoordinates = locaction.coordinate
+                let area = [oldCoordinates, newCoordinates]
+                let polyline = MKPolyline(coordinates: area, count: area.count)
+                mapView.addOverlay(polyline)
+            }
+            
+            oldLocation = locaction
+        }
+    }
+}
+
+// MARK: - MKMapView Delegate Methods
+
+extension PedometerViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        if let overlay = overlay as? MKPolyline {
+            let pr = MKPolylineRenderer(overlay: overlay)
+            pr.strokeColor = UIColor.blue
+            pr.lineWidth = 10
+            return pr
+        }
+        return MKOverlayRenderer()
     }
 }
