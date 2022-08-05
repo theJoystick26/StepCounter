@@ -9,8 +9,10 @@ import UIKit
 import CoreMotion
 import RealmSwift
 import HealthKit
+import MapKit
 
 class PedometerViewController: UIViewController {
+    @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var stepsLabel: UILabel!
     @IBOutlet weak var milesLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
@@ -22,6 +24,8 @@ class PedometerViewController: UIViewController {
     // initializing tracker
     var tracker = Tracker()
     
+    let locationManager = CLLocationManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         startButton.tintColor = UIColor.white
@@ -32,9 +36,17 @@ class PedometerViewController: UIViewController {
         hkManager.authorizeHealthKit { success in
             if success {
                 self.tracker.enableTracking()
+                self.locationManager.configureLocationManager(sender: self)
             }
         }
         //        print("Realm is located at:", realm.configuration.fileURL!)
+    }
+    
+    func centerMapOnLocation(_ location: CLLocation, mapView: MKMapView) {
+        let regionRadius: CLLocationDistance = 500
+        let coordinateRegion = MKCoordinateRegion(center: location.coordinate,
+                                                  latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
+        mapView.setRegion(coordinateRegion, animated: true)
     }
     
     @IBAction func buttonPressed(_ sender: UIButton) {
@@ -83,5 +95,29 @@ extension PedometerViewController: TrackerDelegate {
     
     func didFailWithError(_ error: Error) {
         print(error)
+    }
+}
+
+// MARK: - Extending CLLocationManager Methods
+
+extension CLLocationManager{
+    func configureLocationManager(sender: CLLocationManagerDelegate) {
+        requestAlwaysAuthorization()
+        requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            delegate = sender
+            desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            startUpdatingLocation()
+        }
+    }
+}
+
+// MARK: - CLLocationManager Delegate Methods
+
+extension PedometerViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let locaction: CLLocation = manager.location else { return }
+        centerMapOnLocation(locaction, mapView: mapView)
     }
 }
