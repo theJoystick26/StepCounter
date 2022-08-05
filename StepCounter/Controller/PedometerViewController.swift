@@ -26,12 +26,16 @@ class PedometerViewController: UIViewController {
     
     let locationManager = CLLocationManager()
     
+    var oldLocation: CLLocation?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         startButton.tintColor = UIColor.white
         startButton.backgroundColor = UIColor.green
         
+        mapView.delegate = self
         tracker.delegate = self
+        locationManager.delegate = self
         
         hkManager.authorizeHealthKit { success in
             if success {
@@ -56,6 +60,7 @@ class PedometerViewController: UIViewController {
         } else {
             tracker.stopTrackingSteps()
             updateUI(UIColor.green, "Start")
+            mapView.removeOverlays(mapView.overlays)
         }
     }
     
@@ -117,7 +122,33 @@ extension CLLocationManager{
 
 extension PedometerViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let locaction: CLLocation = manager.location else { return }
+        guard let locaction: CLLocation = locations.last else { return }
         centerMapOnLocation(locaction, mapView: mapView)
+        
+        if tracker.getCountingStepsStatus() {
+            if let oldLocation = oldLocation {
+                let oldCoordinates = oldLocation.coordinate
+                let newCoordinates = locaction.coordinate
+                let area = [oldCoordinates, newCoordinates]
+                let polyline = MKPolyline(coordinates: area, count: area.count)
+                mapView.addOverlay(polyline)
+            }
+            
+            oldLocation = locaction
+        }
+    }
+}
+
+// MARK: - MKMapView Delegate Methods
+
+extension PedometerViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        if let overlay = overlay as? MKPolyline {
+            let pr = MKPolylineRenderer(overlay: overlay)
+            pr.strokeColor = UIColor.blue
+            pr.lineWidth = 10
+            return pr
+        }
+        return MKOverlayRenderer()
     }
 }
