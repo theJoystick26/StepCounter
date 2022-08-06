@@ -149,7 +149,7 @@ extension PedometerViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         if let overlay = overlay as? MKPolyline {
             let pr = MKPolylineRenderer(overlay: overlay)
-            pr.strokeColor = UIColor.blue
+            pr.strokeColor = UIColor.blue.withAlphaComponent(0.8)
             pr.lineWidth = 10
             return pr
         }

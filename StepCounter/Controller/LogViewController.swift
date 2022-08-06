@@ -51,6 +51,7 @@ extension LogViewController: UITableViewDataSource, UITableViewDelegate {
         if let walks = walks {
             cell.textLabel?.text = "\(String(walks[indexPath.row].calories)) calories"
             cell.textLabel?.font = UIFont.systemFont(ofSize: 30)
+            cell.textLabel?.textColor = UIColor.black
             cell.accessoryType = .disclosureIndicator
         }
         

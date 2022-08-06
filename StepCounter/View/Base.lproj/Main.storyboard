@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="89i-zI-pfz">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Walk-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="PedometerViewController" customModule="StepCounter" customModuleProvider="target" sceneMemberID="viewController">
@@ -31,11 +31,10 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Steps: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMp-Jf-hqG" userLabel="Steps Label">
                                                         <rect key="frame" x="40" y="106.5" width="127" height="43"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                                        <nil key="textColor"/>
+                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstItem="kMp-Jf-hqG" firstAttribute="centerY" secondItem="JEH-sI-Vi5" secondAttribute="centerY" id="TtS-Il-C4Y"/>
                                                     <constraint firstItem="kMp-Jf-hqG" firstAttribute="centerX" secondItem="JEH-sI-Vi5" secondAttribute="centerX" id="jCm-5C-NxS"/>
@@ -47,11 +46,10 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Miles: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BAx-ZS-Rbc" userLabel="Miles Label">
                                                         <rect key="frame" x="43.5" y="106.5" width="120" height="43"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                                        <nil key="textColor"/>
+                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstItem="BAx-ZS-Rbc" firstAttribute="centerY" secondItem="flE-yB-F2V" secondAttribute="centerY" id="HYC-bn-v7J"/>
                                                     <constraint firstItem="BAx-ZS-Rbc" firstAttribute="centerX" secondItem="flE-yB-F2V" secondAttribute="centerX" id="fEU-5m-pJX"/>
@@ -75,7 +73,6 @@
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="LTB-cN-229" firstAttribute="centerX" secondItem="Od6-9m-PL1" secondAttribute="centerX" id="5DZ-Ca-BOn"/>
                                             <constraint firstItem="LTB-cN-229" firstAttribute="centerY" secondItem="Od6-9m-PL1" secondAttribute="centerY" id="KyU-wa-MzI"/>
@@ -99,7 +96,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="WhiteBackground"/>
                         <constraints>
                             <constraint firstItem="45u-hr-KkG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="0Zi-f8-YOX"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="45u-hr-KkG" secondAttribute="bottom" id="BEB-KN-NoJ"/>
@@ -107,7 +104,7 @@
                             <constraint firstItem="45u-hr-KkG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="doS-bV-4jJ"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="8nc-0I-Kju"/>
+                    <tabBarItem key="tabBarItem" title="Walk" image="figure.walk" catalog="system" id="8nc-0I-Kju"/>
                     <connections>
                         <outlet property="mapView" destination="l2j-t6-u4q" id="JcR-W0-YzJ"/>
                         <outlet property="milesLabel" destination="BAx-ZS-Rbc" id="sDB-fW-Gov"/>
@@ -129,7 +126,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="x7K-pt-kFw">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" name="WhiteBackground"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PrototypeCell" rowHeight="44" id="dn8-36-o6s">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="44"/>
@@ -138,12 +135,13 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" name="WhiteBackground"/>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8pY-7c-dhM"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="WhiteBackground"/>
                         <constraints>
                             <constraint firstItem="8pY-7c-dhM" firstAttribute="bottom" secondItem="x7K-pt-kFw" secondAttribute="bottom" id="W7X-RW-mX4"/>
                             <constraint firstItem="x7K-pt-kFw" firstAttribute="top" secondItem="8pY-7c-dhM" secondAttribute="top" id="kU5-nS-bWR"/>
@@ -172,12 +170,12 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Steps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VOQ-rm-P8o">
                                 <rect key="frame" x="185" y="437.5" width="44" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="sy1-xE-gFf"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="WhiteBackground"/>
                         <constraints>
                             <constraint firstItem="VOQ-rm-P8o" firstAttribute="centerX" secondItem="c7j-2G-pFb" secondAttribute="centerX" id="7PJ-Zv-MwB"/>
                             <constraint firstItem="VOQ-rm-P8o" firstAttribute="centerY" secondItem="c7j-2G-pFb" secondAttribute="centerY" id="DZx-mY-mOE"/>
@@ -211,11 +209,11 @@
             </objects>
             <point key="canvasLocation" x="636" y="-295"/>
         </scene>
-        <!--Item-->
+        <!--History-->
         <scene sceneID="ewd-Ud-wAw">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gf3-Pl-1u9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="o55-FY-LMw"/>
+                    <tabBarItem key="tabBarItem" title="History" image="heart.text.square.fill" catalog="system" id="o55-FY-LMw"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Luh-wa-uUB">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -232,9 +230,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="figure.walk" catalog="system" width="95" height="128"/>
+        <image name="heart.text.square.fill" catalog="system" width="128" height="114"/>
         <image name="play.fill" catalog="system" width="116" height="128"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <namedColor name="WhiteBackground">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>
