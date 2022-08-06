@@ -84,10 +84,10 @@
                                         <rect key="frame" x="0.0" y="512.5" width="414" height="256.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LTB-cN-229">
-                                                <rect key="frame" x="182" y="103.5" width="50" height="50"/>
+                                                <rect key="frame" x="169.5" y="91" width="75" height="75"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="39i-j3-mCh"/>
-                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="ecZ-0j-OAG"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="75" id="39i-j3-mCh"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="75" id="ecZ-0j-OAG"/>
                                                 </constraints>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" image="play.fill" catalog="system"/>
