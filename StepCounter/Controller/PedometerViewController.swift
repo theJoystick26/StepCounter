@@ -83,8 +83,8 @@ class PedometerViewController: UIViewController {
 extension PedometerViewController: TrackerDelegate {
     func didUpdatePedometerData(_ steps: Int, _ miles: Float) {
         DispatchQueue.main.async {
-            self.stepsLabel.text = "Steps: \(String(steps))"
-            self.milesLabel.text = "Miles: \(miles.description)"
+            self.stepsLabel.text = String(steps)
+            self.milesLabel.text = miles.description
         }
     }
     

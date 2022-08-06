@@ -49,8 +49,8 @@ extension LogViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PrototypeCell", for: indexPath)
         
         if let walks = walks {
-            cell.textLabel?.text = "\(String(walks[indexPath.row].calories)) calories"
-            cell.textLabel?.font = UIFont.systemFont(ofSize: 30)
+            cell.textLabel?.text = "\(String(format: "%.2f", walks[indexPath.row].calories)) calories"
+            cell.textLabel?.font = UIFont(name: "RobotoCondensed-Regular", size: 24)
             cell.textLabel?.textColor = UIColor.black
             cell.accessoryType = .disclosureIndicator
         }

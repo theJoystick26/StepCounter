@@ -7,6 +7,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="RobotoCondensed-Bold.ttf">
+            <string>RobotoCondensed-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Walk-->
         <scene sceneID="tne-QT-ifu">
@@ -28,31 +33,49 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JEH-sI-Vi5" userLabel="Steps View">
                                                 <rect key="frame" x="0.0" y="0.0" width="207" height="256"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Steps: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMp-Jf-hqG" userLabel="Steps Label">
-                                                        <rect key="frame" x="40" y="106.5" width="127" height="43"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMp-Jf-hqG" userLabel="Steps Label">
+                                                        <rect key="frame" x="91.5" y="100" width="24.5" height="56.5"/>
+                                                        <fontDescription key="fontDescription" name="RobotoCondensed-Bold" family="Roboto Condensed" pointSize="48"/>
+                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="steps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V4j-1Q-Gdc">
+                                                        <rect key="frame" x="119" y="128" width="44" height="23.5"/>
+                                                        <fontDescription key="fontDescription" name="RobotoCondensed-Bold" family="Roboto Condensed" pointSize="20"/>
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
                                                 <constraints>
+                                                    <constraint firstItem="V4j-1Q-Gdc" firstAttribute="leading" secondItem="kMp-Jf-hqG" secondAttribute="trailing" constant="3" id="AYF-Bs-kBs"/>
+                                                    <constraint firstItem="V4j-1Q-Gdc" firstAttribute="top" secondItem="kMp-Jf-hqG" secondAttribute="centerY" id="NLk-TZ-maY"/>
                                                     <constraint firstItem="kMp-Jf-hqG" firstAttribute="centerY" secondItem="JEH-sI-Vi5" secondAttribute="centerY" id="TtS-Il-C4Y"/>
+                                                    <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="V4j-1Q-Gdc" secondAttribute="trailing" constant="44" id="VcM-wg-QMf"/>
                                                     <constraint firstItem="kMp-Jf-hqG" firstAttribute="centerX" secondItem="JEH-sI-Vi5" secondAttribute="centerX" id="jCm-5C-NxS"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="flE-yB-F2V" userLabel="Miles View">
                                                 <rect key="frame" x="207" y="0.0" width="207" height="256"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Miles: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BAx-ZS-Rbc" userLabel="Miles Label">
-                                                        <rect key="frame" x="43.5" y="106.5" width="120" height="43"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BAx-ZS-Rbc" userLabel="Miles Label">
+                                                        <rect key="frame" x="91.5" y="100" width="24.5" height="56.5"/>
+                                                        <fontDescription key="fontDescription" name="RobotoCondensed-Bold" family="Roboto Condensed" pointSize="48"/>
+                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="miles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qfX-Bg-zRk">
+                                                        <rect key="frame" x="119" y="128" width="44" height="23.5"/>
+                                                        <fontDescription key="fontDescription" name="RobotoCondensed-Bold" family="Roboto Condensed" pointSize="20"/>
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
                                                 <constraints>
+                                                    <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="qfX-Bg-zRk" secondAttribute="trailing" constant="44" id="6Ti-8g-xMj"/>
+                                                    <constraint firstItem="qfX-Bg-zRk" firstAttribute="leading" secondItem="BAx-ZS-Rbc" secondAttribute="trailing" constant="3" id="EVL-xW-47G"/>
                                                     <constraint firstItem="BAx-ZS-Rbc" firstAttribute="centerY" secondItem="flE-yB-F2V" secondAttribute="centerY" id="HYC-bn-v7J"/>
                                                     <constraint firstItem="BAx-ZS-Rbc" firstAttribute="centerX" secondItem="flE-yB-F2V" secondAttribute="centerX" id="fEU-5m-pJX"/>
+                                                    <constraint firstItem="qfX-Bg-zRk" firstAttribute="top" secondItem="BAx-ZS-Rbc" secondAttribute="centerY" id="g0q-bs-VSL"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
