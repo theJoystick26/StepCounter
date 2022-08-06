@@ -30,6 +30,8 @@ class PedometerViewController: UIViewController {
         super.viewDidLoad()
         startButton.tintColor = UIColor.white
         startButton.backgroundColor = UIColor.green
+        startButton.layer.cornerRadius = 0.5 * startButton.bounds.size.width
+        startButton.clipsToBounds = true
         
         mapView.delegate = self
         tracker.delegate = self
@@ -54,19 +56,23 @@ class PedometerViewController: UIViewController {
     @IBAction func buttonPressed(_ sender: UIButton) {
         if !tracker.getCountingStepsStatus() {
             tracker.startTrackingSteps()
-            updateUI(UIColor.red, "Stop")
+            if let stopImage = UIImage(systemName: "stop.fill") {
+                updateUI(UIColor.red, stopImage)
+            }
         } else {
             tracker.stopTrackingSteps()
-            updateUI(UIColor.green, "Start")
+            if let playImage = UIImage(systemName: "play.fill") {
+                updateUI(UIColor.green, playImage)
+            }
             mapView.removeOverlays(mapView.overlays)
         }
     }
     
     // MARK: - Update UI Methods
     
-    func updateUI(_ color: UIColor, _ buttonText: String) {
+    func updateUI(_ color: UIColor, _ buttonImage: UIImage) {
         startButton.backgroundColor = color
-        startButton.setTitle(buttonText, for: .normal)
+        startButton.setImage(buttonImage, for: .normal)
         self.stepsLabel.text = "Steps: 0"
         self.milesLabel.text = "Miles: 0"
     }

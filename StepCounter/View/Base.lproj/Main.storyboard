@@ -62,15 +62,14 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Od6-9m-PL1" userLabel="Button View">
                                         <rect key="frame" x="0.0" y="512.5" width="414" height="256.5"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LTB-cN-229">
-                                                <rect key="frame" x="144.5" y="103.5" width="125" height="50"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LTB-cN-229">
+                                                <rect key="frame" x="182" y="103.5" width="50" height="50"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="125" id="39i-j3-mCh"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="39i-j3-mCh"/>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="ecZ-0j-OAG"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="Start"/>
+                                                <state key="normal" image="play.fill" catalog="system"/>
                                                 <connections>
                                                     <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7t7-A8-vKh"/>
                                                 </connections>
@@ -233,6 +232,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="play.fill" catalog="system" width="116" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
