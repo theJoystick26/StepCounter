@@ -8,13 +8,15 @@
 import UIKit
 
 class StatsViewController: UIViewController {
-    @IBOutlet weak var stepsLabel: UILabel!
+    @IBOutlet weak var stepsDescription: UILabel!
     
     var steps: Int = 0
+    var calories: Float = 0
+    var miles: Float = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        stepsLabel.text = String(steps)
+        stepsDescription.text = "You walked \(String(steps)) steps, burning \(String(format: "%.2f", calories)) calories and covering \(miles) miles"
     }
 }

@@ -30,6 +30,8 @@ class PedometerViewController: UIViewController {
         super.viewDidLoad()
         startButton.tintColor = UIColor.white
         startButton.backgroundColor = UIColor.green
+        startButton.layer.cornerRadius = 0.5 * startButton.bounds.size.width
+        startButton.clipsToBounds = true
         
         mapView.delegate = self
         tracker.delegate = self
@@ -54,21 +56,25 @@ class PedometerViewController: UIViewController {
     @IBAction func buttonPressed(_ sender: UIButton) {
         if !tracker.getCountingStepsStatus() {
             tracker.startTrackingSteps()
-            updateUI(UIColor.red, "Stop")
+            if let stopImage = UIImage(systemName: "stop.fill") {
+                updateUI(UIColor.red, stopImage)
+            }
         } else {
             tracker.stopTrackingSteps()
-            updateUI(UIColor.green, "Start")
+            if let playImage = UIImage(systemName: "play.fill") {
+                updateUI(UIColor.green, playImage)
+            }
             mapView.removeOverlays(mapView.overlays)
         }
     }
     
     // MARK: - Update UI Methods
     
-    func updateUI(_ color: UIColor, _ buttonText: String) {
+    func updateUI(_ color: UIColor, _ buttonImage: UIImage) {
         startButton.backgroundColor = color
-        startButton.setTitle(buttonText, for: .normal)
-        self.stepsLabel.text = "Steps: 0"
-        self.milesLabel.text = "Miles: 0"
+        startButton.setImage(buttonImage, for: .normal)
+        self.stepsLabel.text = "0"
+        self.milesLabel.text = "0"
     }
 }
 
@@ -77,8 +83,8 @@ class PedometerViewController: UIViewController {
 extension PedometerViewController: TrackerDelegate {
     func didUpdatePedometerData(_ steps: Int, _ miles: Float) {
         DispatchQueue.main.async {
-            self.stepsLabel.text = "Steps: \(String(steps))"
-            self.milesLabel.text = "Miles: \(miles.description)"
+            self.stepsLabel.text = String(steps)
+            self.milesLabel.text = miles.description
         }
     }
     
@@ -143,7 +149,7 @@ extension PedometerViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         if let overlay = overlay as? MKPolyline {
             let pr = MKPolylineRenderer(overlay: overlay)
-            pr.strokeColor = UIColor.blue
+            pr.strokeColor = UIColor.blue.withAlphaComponent(0.8)
             pr.lineWidth = 10
             return pr
         }
