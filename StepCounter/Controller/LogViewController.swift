@@ -72,6 +72,8 @@ extension LogViewController {
                 let statsViewController = segue.destination as! StatsViewController
                 let sender = sender as! IndexPath
                 statsViewController.steps = walks[sender.row].steps
+                statsViewController.calories = walks[sender.row].calories
+                statsViewController.miles = walks[sender.row].miles
             }
         }
     }

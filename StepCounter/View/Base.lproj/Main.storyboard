@@ -11,6 +11,9 @@
         <array key="RobotoCondensed-Bold.ttf">
             <string>RobotoCondensed-Bold</string>
         </array>
+        <array key="RobotoCondensed-Regular.ttf">
+            <string>RobotoCondensed-Regular</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Walk-->
@@ -90,7 +93,9 @@
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="75" id="ecZ-0j-OAG"/>
                                                 </constraints>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" image="play.fill" catalog="system"/>
+                                                <state key="normal" image="play.fill" catalog="system">
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="36"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7t7-A8-vKh"/>
                                                 </connections>
@@ -190,9 +195,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Steps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VOQ-rm-P8o">
-                                <rect key="frame" x="185" y="437.5" width="44" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Steps" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VOQ-rm-P8o">
+                                <rect key="frame" x="187" y="437.5" width="40.5" height="21.5"/>
+                                <fontDescription key="fontDescription" name="RobotoCondensed-Regular" family="Roboto Condensed" pointSize="18"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -202,11 +207,13 @@
                         <constraints>
                             <constraint firstItem="VOQ-rm-P8o" firstAttribute="centerX" secondItem="c7j-2G-pFb" secondAttribute="centerX" id="7PJ-Zv-MwB"/>
                             <constraint firstItem="VOQ-rm-P8o" firstAttribute="centerY" secondItem="c7j-2G-pFb" secondAttribute="centerY" id="DZx-mY-mOE"/>
+                            <constraint firstItem="sy1-xE-gFf" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="VOQ-rm-P8o" secondAttribute="trailing" constant="50" id="Q9e-cK-yNJ"/>
+                            <constraint firstItem="VOQ-rm-P8o" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="sy1-xE-gFf" secondAttribute="leading" constant="50" id="QV7-az-HHm"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="aOG-mF-7ZA"/>
                     <connections>
-                        <outlet property="stepsLabel" destination="VOQ-rm-P8o" id="fMI-Lf-ES6"/>
+                        <outlet property="stepsDescription" destination="VOQ-rm-P8o" id="WRO-TI-XB8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qBi-ZM-lSc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

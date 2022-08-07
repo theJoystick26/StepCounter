@@ -73,8 +73,8 @@ class PedometerViewController: UIViewController {
     func updateUI(_ color: UIColor, _ buttonImage: UIImage) {
         startButton.backgroundColor = color
         startButton.setImage(buttonImage, for: .normal)
-        self.stepsLabel.text = "Steps: 0"
-        self.milesLabel.text = "Miles: 0"
+        self.stepsLabel.text = "0"
+        self.milesLabel.text = "0"
     }
 }
 
