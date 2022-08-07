@@ -48,11 +48,15 @@ extension LogViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PrototypeCell", for: indexPath)
         
+        let indicator = UIImage(systemName: "chevron.right")
+        let indicatorImageView = UIImageView(image: indicator)
+        indicatorImageView.tintColor = .black
+        
         if let walks = walks {
             cell.textLabel?.text = "\(String(format: "%.2f", walks[indexPath.row].calories)) calories"
             cell.textLabel?.font = UIFont(name: "RobotoCondensed-Regular", size: 24)
             cell.textLabel?.textColor = UIColor.black
-            cell.accessoryType = .disclosureIndicator
+            cell.accessoryView = indicatorImageView
         }
         
         return cell
